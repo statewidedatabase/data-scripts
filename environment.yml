@@ -1,6 +1,6 @@
 name: example-environment
 channels:
-  - conda-forge
+  - conda install
 dependencies:
   - numpy
   - psutil
