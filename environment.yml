@@ -6,5 +6,4 @@ dependencies:
   - psutil
   - toolz
   - matplotlib
-  - -c https://conda.binstar.org/rnelsonchem simpledbf
   - pandas
