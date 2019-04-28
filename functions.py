@@ -37,12 +37,14 @@ def importCSV(filename):
 
 ## Combination of two functions above
 def importData(filename):
+
+    check = CVAPfileCheck(filename)
     # Match file names based on if .csv or .dbf to properly import as a dataframe
     if filename.endswith('.csv'):
 
         df = importCSV(filename)
 
-        if CVAPfileCheck:
+        if check:
             df = CVAPcolumnChange(df)
         else:
             pass
@@ -54,7 +56,7 @@ def importData(filename):
     elif filename.endswith('.dbf'):
         df = importDBF(filename)
 
-        if CVAPfileCheck:
+        if check:
             df = CVAPcolumnChange(df)
         else:
             pass
