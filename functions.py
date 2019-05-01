@@ -79,7 +79,20 @@ def filterData(df, filterVar):
         return df
 
 
-def mergeCvapBlk(df1, df2, left, right, filterVar=None):
+def dataFilter(df, featureKey, featureSet, filterKey = None):
+    if filterKey == None:
+        return df[featureSet]
+    else:
+
+        if isinstance(filterKey, list):
+            filterKey = [x.upper() for x in filterKey]
+            return df[df[featureKey].isin(filterKey)][featureSet]
+        else:
+            filterKey = filterKey.upper()
+            return df[df[featureKey] == filterKey][featureSet]
+
+
+def mergeData(df1, df2, left, right, filterVar=None):
     merged = pd.merge(df1, df2, left_on=left, right_on=right, how='inner')
 
     merged = filterData(merged, filterVar)
